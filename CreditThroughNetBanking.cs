@@ -4,7 +4,7 @@ using System.Text;
 
 namespace BankInterface
 {
-    class CreditThroughNetBanking : IBank
+    class CreditThroughNetBanking : IBankCredit
     {
         public decimal balance { get; set; }
         public CreditThroughNetBanking(decimal bal)

@@ -4,8 +4,8 @@ using System.Text;
 
 namespace BankInterface
 {
-    public interface IBankCredit
+    public interface IBankDebit
     {
-        decimal CreditMoney(decimal amount);
+        decimal DebitMoney(decimal amount);
     }
 }

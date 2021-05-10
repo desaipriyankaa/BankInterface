@@ -4,7 +4,7 @@ using System.Text;
 
 namespace BankInterface
 {
-    class CreditThroughUPI : IBank
+    class CreditThroughUPI : IBankCredit
     {
         public decimal balance { get; set; }
         public CreditThroughUPI(decimal bal)
