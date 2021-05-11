@@ -4,6 +4,7 @@ namespace BankInterface
 {
     class Program
     {
+
         static void Main(string[] args)
         {
             decimal defaultBalance = 100;
@@ -20,19 +21,19 @@ namespace BankInterface
                 try
                 {
                     choice = int.Parse(Console.ReadLine());
-                    
-                    if (choice == 5)
-                    {
-                        break;
-                    }
+
+                    //if (choice == 5)
+                    //{
+                    //    break;
+                    //}
                     if (choice < 0 || choice > 5)
                     {
                         throw new IndexOutOfRangeException();
                     }
-                    
-                        Console.WriteLine("Enter Amount to Credit/Debit :");
-                        money = decimal.Parse(Console.ReadLine());
-                    
+
+                    Console.WriteLine("Enter Amount to Credit/Debit :");
+                    money = decimal.Parse(Console.ReadLine());
+
                 }
                 catch (ArgumentException ex)
                 {
@@ -55,28 +56,34 @@ namespace BankInterface
                 switch (choice)
                 {
                     case 1:
-                        CreditThroughUPI upi = new CreditThroughUPI(defaultBalance);
+                        IBankCredit upi = new CreditThroughUPI(defaultBalance);
                         defaultBalance = upi.CreditMoney(money);
                         Console.WriteLine($"Account Current balance : {defaultBalance}");
                         break;
 
                     case 2:
-                        CreditThroughNetBanking netbank = new CreditThroughNetBanking(defaultBalance);
+                       IBankCredit netbank = new CreditThroughNetBanking(defaultBalance);
                         defaultBalance = netbank.CreditMoney(money);
                         Console.WriteLine($"Account Current balance : {defaultBalance}");
                         break;
 
                     case 3:
-                        DebitThroughATM atm = new DebitThroughATM(defaultBalance);
+                        IBankDebit atm = new DebitThroughATM(defaultBalance);
                         defaultBalance = atm.DebitMoney(money);
                         Console.WriteLine($"Account Current balance : {defaultBalance}");
                         break;
 
                     case 4:
-                        DebitThroughATM cash = new DebitThroughATM(defaultBalance);
+                        IBankDebit cash = new DebitThroughATM(defaultBalance);
                         defaultBalance = cash.DebitMoney(money);
                         Console.WriteLine($"Account Current balance : {defaultBalance}");
                         break;
+
+
+                    case 5:
+                        Environment.Exit(0);
+                        break; ;
+
                 }
 
 
